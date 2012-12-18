@@ -446,12 +446,26 @@ public class T00thTransaction extends JavaPlugin implements Listener{
                         promote = false;
                     } else {
                         for(int current = 1; current <= (tiers-1); current++){
-                            if((amount >= (float)config.getDouble("Config.Ranks.Rank"+current+".Minimum_Donation")) && (amount < (float)config.getDouble("Config.Ranks.Rank"+(current+1)+".Minimum_Donation")) && !Arrays.asList(perms.getPlayerGroups(world, player)).contains(config.getString("Config.Ranks.Rank"+current+".Name"))){
+                            String currentKey = "Config.Ranks.Rank"+current+".Minimum_Donation";
+                            String nextKey    = "Config.Ranks.Rank"+(current+1)+".Minimum_Donation";
+                            boolean amountAboveMinimumCurrent = amount >= (float)config.getDouble(currentKey);
+                            boolean amountBelowMinimumNext = amount < (float)config.getDouble(nextKey);
+                            String[] playerGroupNames = perms.getPlayerGroups(world, player);
+                            List<String> playerGroups = Arrays.asList(playerGroupNames);
+                            String currentGroupKey = "Config.Ranks.Rank"+current+".Name";
+                            boolean notInCurrentGroup = !playerGroups.contains(config.getString(currentGroupKey));
+                            if(amountAboveMinimumCurrent && amountBelowMinimumNext && notInCurrentGroup){
                                 tier = current;
                                 promote = true;
                             }
                         }
-                        if((amount >= (float)config.getDouble("Config.Ranks.Rank"+tiers+".Minimum_Donation")) && !Arrays.asList(perms.getPlayerGroups(world, player)).contains(config.getString("Config.Ranks.Rank"+tiers+".Name"))){
+                        String lastKey = "Config.Ranks.Rank"+tiers+".Minimum_Donation";
+                        boolean amountAboveMinimumLast = amount >= (float)config.getDouble(lastKey);
+                        String[] playerGroupNames = perms.getPlayerGroups(world, player);
+                        List<String> playerGroups = Arrays.asList(playerGroupNames);
+                        String lastGroupKey = "Config.Ranks.Rank"+tiers+".Name";
+                        boolean notInLastGroup = !playerGroups.contains(config.getString(lastGroupKey));
+                        if(amountAboveMinimumLast && notInLastGroup){
                             tier = tiers;
                             promote = true;
                         }
