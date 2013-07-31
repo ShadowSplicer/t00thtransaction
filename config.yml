@@ -44,15 +44,6 @@ Config:
         OnlyUpdateOnlinePlayers: false
         #How much in game economy money do they get per dollar donation(set to zero if no economy plugin used or you wish it at zero)
         CashRewardPerDollar: 1
-        GiftBox:
-            #Enable/disable giftbox
-            Enabled: true
-            #Donation total increments at which players recieve a gift
-            CostPer: 30
-            #Enable built in enchantment gift
-            Enchant: true
-            #Enable built in chainmail gift
-            Chainmail: true
         Mode:     #Can only choose one mode
             #Enables total donation based promotions
             LifeTimeRanksEnabled: true

@@ -20,6 +20,7 @@ public class PackageExpiresEvent extends Event {
     public HandlerList getHandlers() {
         return handlers;
     }
+
     public static HandlerList getHandlerList() {
         return handlers;
     }
@@ -58,7 +59,5 @@ public class PackageExpiresEvent extends Event {
     public long getActivated() {
         return activated;
     }
-
-
 
 }

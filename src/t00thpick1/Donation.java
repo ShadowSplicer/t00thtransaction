@@ -16,42 +16,49 @@ public class Donation {
         status = used;
         id = unid;
     }
+
     /**
      * @return true if same
      */
     public boolean isSame(Donation don) {
-        if(don.getAmount()==amount&&don.getTimestamp()==timestamp&&don.getPlayer()==player){
+        if (don.getAmount() == amount && don.getTimestamp() == timestamp && don.getPlayer() == player) {
             return true;
         }
         return false;
     }
+
     /**
      * @return the player
      */
     public String getPlayer() {
         return player;
     }
+
     /**
      * @return the donation amount
      */
     public float getAmount() {
         return amount;
     }
+
     /**
      * @return the status
      */
     public int getStatus() {
         return status;
     }
-    public void setStatus(int i){
+
+    public void setStatus(int i) {
         status = i;
     }
+
     /**
      * @return the timestamp
      */
     public Timestamp getTimestamp() {
         return timestamp;
     }
+
     /**
      * @return the id
      */
